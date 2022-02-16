@@ -1,0 +1,22 @@
+image: gcc
+before_script:
+ - apt-get update --yes
+ - apt-get install --yes cmake
+ - apt-get install --yes flex bison
+ - apt-get install --yes libgtest-dev
+
+build:
+  script:
+    - export HOME_DIR=$PWD
+    - cmake ./
+    - make
+    - ./test/server 127.0.0.1:8090 &
+    - ./bexpect 127.0.0.1:8090 blang/cmdfile.txt
+    - cd /usr/src/gtest
+    - cmake ./
+    - make
+    - cp lib/*.a /usr/lib
+    - cd $HOME_DIR/gtest
+    - cmake ./
+    - make
+    - ./runTests
