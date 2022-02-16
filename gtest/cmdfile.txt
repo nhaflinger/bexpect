@@ -1,0 +1,7 @@
+start;
+wait 1000000; # this is a comment
+# comment on its own line
+send x"0a 2d 31";  # this is another comment
+send x"0a 2d 31" x"ab cd ef"; 
+expect x"0a 2d 31";
+end;
