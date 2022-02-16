@@ -1,7 +1,0 @@
-start;
-wait 2000000; # this is a comment
-# comment on its own line
-send x"13 e9";  # this is another comment
-#send x"0a 2d 31" x"ab cd ef"; 
-expect x"17:13 ff:e9";
-end;
